@@ -81,7 +81,6 @@ public class Persona {
     return "Persona{" +
         "nombre='" + nombre + '\'' +
         ", edad=" + edad +
-        ", NSS='" + NSS + '\'' +
         ", sexo=" + sexo +
         ", peso=" + peso +
         ", altura=" + altura +

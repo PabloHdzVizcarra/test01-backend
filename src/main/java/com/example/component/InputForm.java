@@ -6,7 +6,7 @@ public interface InputForm {
 
   int requireAge();
 
-  String requireSex();
+  char requireSex();
 
   double requireWeight();
 
