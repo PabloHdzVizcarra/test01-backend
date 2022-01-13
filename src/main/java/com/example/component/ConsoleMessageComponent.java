@@ -51,6 +51,6 @@ public class ConsoleMessageComponent implements OutPutMessageComponent {
   @Override
   public void despedida() {
     System.out.println();
-    System.out.println("Gracias por haber usado esta aplicacion hasta pronto.");
+    System.out.println("Gracias por haber usado esta aplicacion hasta pronto...");
   }
 }
