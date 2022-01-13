@@ -23,15 +23,22 @@ public class FormularioPorConsola implements EntradaFormulario {
   @Override
   public int solicitarEdad() {
     System.out.println("Ingresa tu edad:");
-
-    int edad = Integer.parseInt(scanner.nextLine());
+    int edad = obtenerEdad();
 
     while (edad <= 0) {
       System.out.println("ingresaste una edad invalida, vuelve a intentarlo");
-      edad = Integer.parseInt(scanner.nextLine());
+      edad = obtenerEdad();
     }
 
     return edad;
+  }
+
+  private int obtenerEdad() {
+    try{
+      return Integer.parseInt(scanner.nextLine());
+    } catch (NumberFormatException e) {
+      return 0;
+    }
   }
 
   @Override
@@ -54,27 +61,43 @@ public class FormularioPorConsola implements EntradaFormulario {
   @Override
   public double solicitarPeso() {
     System.out.println("Ingresa tu peso en kilogramos:");
-    double peso = Double.parseDouble(scanner.nextLine());
+    double peso = obtenerPeso();
 
     while (peso <= 0) {
       System.out.println("ingresaste tu peso de manera incorrecta");
-      peso = Double.parseDouble(scanner.nextLine());
+      peso = obtenerPeso();
     }
 
     return peso;
   }
 
+  private double obtenerPeso() {
+    try {
+      return Double.parseDouble(scanner.nextLine());
+    } catch (NumberFormatException e) {
+      return 0;
+    }
+  }
+
   @Override
   public double solicitarAltura() {
     System.out.println("Ingresa tu altura en metros:");
-    double altura = Double.parseDouble(scanner.nextLine());
+    double altura = obtenerAltura();
 
     while (altura <= 0) {
       System.out.println("ingresaste tu altura de manera incorrecta");
-      altura = Double.parseDouble(scanner.nextLine());
+      altura = obtenerAltura();
     }
 
     return altura;
+  }
+
+  private double obtenerAltura() {
+    try {
+      return Double.parseDouble(scanner.nextLine());
+    } catch (NumberFormatException e) {
+      return 0;
+    }
   }
 
   @Override
