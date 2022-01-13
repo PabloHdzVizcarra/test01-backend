@@ -7,8 +7,9 @@ import com.example.component.MessageComponent;
 
 public class ConsoleApplication {
   public static void main(String[] args) {
-    ConsoleInputForm messageFormComponent = new ConsoleInputForm();
-    FormComponent formComponent = new FormComponent(messageFormComponent);
+    ConsoleInputForm inputForm = new ConsoleInputForm();
+    FormComponent formComponent = new FormComponent(inputForm);
+
     ConsoleMessageComponent consoleMessage = new ConsoleMessageComponent();
     MessageComponent messageComponent = new MessageComponent(consoleMessage);
 
