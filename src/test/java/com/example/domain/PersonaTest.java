@@ -17,7 +17,7 @@ class PersonaTest {
 
   @Test
   void givenRecommendedValues_whenCalculateIMC() {
-    persona = new Persona("john", 29, "H", 76.0, 1.75);
+    persona = new Persona("john", 29, 'H', 76.0, 1.75);
     int expected = 0;
     int actual = persona.calcularIMC();
 
@@ -26,7 +26,7 @@ class PersonaTest {
 
   @Test
   void givenLightValues_CalculateIMC() {
-    persona = new Persona("john", 29, "H", 60.0, 1.75);
+    persona = new Persona("john", 29, 'H', 60.0, 1.75);
     int expected = -1;
     int actual = persona.calcularIMC();
 
@@ -35,7 +35,7 @@ class PersonaTest {
 
   @Test
   void givenWeightValues_whenCalculateIMC() {
-    persona = new Persona("john", 29, "H", 82.0, 1.75);
+    persona = new Persona("john", 29, 'H', 82.0, 1.75);
     int expected = 1;
     int actual = persona.calcularIMC();
 
@@ -44,7 +44,7 @@ class PersonaTest {
 
   @Test
   void givenRecommendedValuesWoman_whenCalculateIMC() {
-    persona = new Persona("sara", 25, "M", 69.0, 1.70);
+    persona = new Persona("sara", 25, 'M', 69.0, 1.70);
     int expected = 0;
     int actual = persona.calcularIMC();
 
@@ -53,7 +53,7 @@ class PersonaTest {
 
   @Test
   void givenLightValuesWoman_whenCalculateIMC() {
-    persona = new Persona("sara", 25, "M", 54.0, 1.70);
+    persona = new Persona("sara", 25, 'M', 54.0, 1.70);
     int expected = -1;
     int actual = persona.calcularIMC();
 
@@ -62,7 +62,7 @@ class PersonaTest {
 
   @Test
   void givenWeightValuesWoman_whenCalculateIMC() {
-    persona = new Persona("sara", 25, "M", 70, 1.70);
+    persona = new Persona("sara", 25, 'M', 70, 1.70);
     int expected = 1;
     int actual = persona.calcularIMC();
 
@@ -71,7 +71,7 @@ class PersonaTest {
 
   @Test
   void givenPersonCorrectAge_whenEsMayorEdad() {
-    persona = new Persona("sara", 25, "M", 70, 1.70);
+    persona = new Persona("sara", 25, 'M', 70, 1.70);
 
     boolean isLegalAge = persona.esMayorDeEdad();
     assertTrue(isLegalAge);
@@ -79,7 +79,7 @@ class PersonaTest {
 
   @Test
   void givenPersonLowerAge_whenEsMayorEdad() {
-    persona = new Persona("sara", 12, "M", 70, 1.70);
+    persona = new Persona("sara", 12, 'M', 70, 1.70);
 
     boolean isLegalAge = persona.esMayorDeEdad();
     assertFalse(isLegalAge);
@@ -94,5 +94,23 @@ class PersonaTest {
     String nss = (String) field.get(persona);
 
     assertEquals(8, nss.length());
+  }
+
+  @Test
+  void givenPersonaGenreFemale_whenComprobarSexo() {
+    Persona persona = new Persona("sara", 12, 'M', 70, 1.70);
+
+    boolean genre = persona.comprobarSexo('M');
+
+    assertTrue(genre);
+  }
+
+  @Test
+  void givenPersonaGenreMan_whenComprobarSexo() {
+    Persona persona = new Persona("sara", 12, 'H', 70, 1.70);
+
+    boolean genre = persona.comprobarSexo('M');
+
+    assertFalse(genre);
   }
 }
