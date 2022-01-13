@@ -2,6 +2,7 @@ package com.example.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.reflect.Field;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -66,5 +67,32 @@ class PersonaTest {
     int actual = persona.calcularIMC();
 
     assertEquals(expected, actual);
+  }
+
+  @Test
+  void givenPersonCorrectAge_whenEsMayorEdad() {
+    persona = new Persona("sara", 25, "M", 70, 1.70);
+
+    boolean isLegalAge = persona.esMayorDeEdad();
+    assertTrue(isLegalAge);
+  }
+
+  @Test
+  void givenPersonLowerAge_whenEsMayorEdad() {
+    persona = new Persona("sara", 12, "M", 70, 1.70);
+
+    boolean isLegalAge = persona.esMayorDeEdad();
+    assertFalse(isLegalAge);
+  }
+
+  @Test
+  void mustBeCreateNSS() throws NoSuchFieldException, IllegalAccessException {
+    Persona persona = new Persona();
+
+    Field field = Persona.class.getDeclaredField("NSS");
+    field.setAccessible(true);
+    String nss = (String) field.get(persona);
+
+    assertEquals(8, nss.length());
   }
 }

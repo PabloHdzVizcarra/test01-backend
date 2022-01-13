@@ -1,6 +1,8 @@
 package com.example.domain;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+import java.util.Random;
 
 public class Persona {
   private String nombre = "";
@@ -9,11 +11,11 @@ public class Persona {
   private String sexo = "H";
   private double peso = 0;
   private double altura = 0;
-  private static final int DEBAJO_PESO_IDEAL = -1;
-  private static final int PESO_IDEAL = 0;
-  private static final int SOBREPESO = 1;
+  private static final int MAYORIA_EDAD = 18;
 
-  public Persona() {}
+  public Persona() {
+    this.NSS = generateNSS();
+  }
 
   public Persona(String nombre, int edad, String sexo, double peso, double altura) {
     this.nombre = nombre;
@@ -21,6 +23,7 @@ public class Persona {
     this.sexo = sexo;
     this.peso = peso;
     this.altura = altura;
+    this.NSS = generateNSS();
   }
 
   public void setNombre(String nombre) {
@@ -52,15 +55,24 @@ public class Persona {
   }
 
   public boolean esMayorDeEdad() {
-    return true;
+    return edad >= MAYORIA_EDAD;
   }
 
   private boolean comprobarSexo() {
     return true;
   }
 
-  private String generaNSS() {
-    return "";
+  private String generateNSS() {
+    int leftLimit = 48;
+    int rightLimit = 122;
+    int targetStringLength = 8;
+    Random random = new Random();
+
+    return random.ints(leftLimit, rightLimit + 1)
+        .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+        .limit(targetStringLength)
+        .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+        .toString();
   }
 
   // TODO: 1/12/2022 remember implement toString method
