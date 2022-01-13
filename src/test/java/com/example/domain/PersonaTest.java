@@ -11,7 +11,7 @@ class PersonaTest {
 
   @BeforeEach
   void setUp() {
-    persona = new Persona("john", 29, "H", 82.0, 1.75);
+    persona = new Persona();
   }
 
   @Test
@@ -35,6 +35,33 @@ class PersonaTest {
   @Test
   void givenWeightValues_whenCalculateIMC() {
     persona = new Persona("john", 29, "H", 82.0, 1.75);
+    int expected = 1;
+    int actual = persona.calcularIMC();
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void givenRecommendedValuesWoman_whenCalculateIMC() {
+    persona = new Persona("sara", 25, "M", 69.0, 1.70);
+    int expected = 0;
+    int actual = persona.calcularIMC();
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void givenLightValuesWoman_whenCalculateIMC() {
+    persona = new Persona("sara", 25, "M", 54.0, 1.70);
+    int expected = -1;
+    int actual = persona.calcularIMC();
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void givenWeightValuesWoman_whenCalculateIMC() {
+    persona = new Persona("sara", 25, "M", 70, 1.70);
     int expected = 1;
     int actual = persona.calcularIMC();
 

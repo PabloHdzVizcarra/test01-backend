@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.util.Objects;
+
 public class Persona {
   private String nombre = "";
   private int edad = 0;
@@ -42,14 +44,10 @@ public class Persona {
   }
 
   public int calcularIMC() {
-    double result = peso / (altura * altura);
-
-    if (result < 20) {
-      return DEBAJO_PESO_IDEAL;
-    } else if (result >= 20 && result <= 25) {
-      return PESO_IDEAL;
+    if (Objects.equals(sexo, "M")) {
+      return new WomanCalculateIMC().calculate(altura, peso);
     } else {
-      return SOBREPESO;
+      return new MenCalculateIMC().calculate(altura, peso);
     }
   }
 
@@ -61,28 +59,9 @@ public class Persona {
     return true;
   }
 
-  @Override
-  public String toString() {
-    return "Persona{"
-        + "nombre='"
-        + nombre
-        + '\''
-        + ", edad="
-        + edad
-        + ", NSS='"
-        + NSS
-        + '\''
-        + ", sexo='"
-        + sexo
-        + '\''
-        + ", peso="
-        + peso
-        + ", altura="
-        + altura
-        + '}';
-  }
-
   private String generaNSS() {
     return "";
   }
+
+  // TODO: 1/12/2022 remember implement toString method
 }
