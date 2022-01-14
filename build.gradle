@@ -2,6 +2,7 @@ plugins {
     id 'java'
 }
 
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -16,4 +17,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.example.ConsoleApplication'
+        )
+    }
 }
