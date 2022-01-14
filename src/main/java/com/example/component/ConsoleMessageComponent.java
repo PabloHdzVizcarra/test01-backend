@@ -10,10 +10,6 @@ public class ConsoleMessageComponent implements OutPutMessageComponent {
     System.out.println(
         "A continuacion se te pedira proporcionar informacion para poder calcular "
             + "tus estadisticas");
-
-    System.out.println(
-        "en cualquier momento puedes teclear 'cancelar' para interrumpir la "
-            + "operacion del programa");
   }
 
   @Override

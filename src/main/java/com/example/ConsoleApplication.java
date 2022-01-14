@@ -14,9 +14,9 @@ public class ConsoleApplication {
     FormComponent formComponent = new FormComponent(inputForm);
     ConsoleMessageComponent consoleMessage = new ConsoleMessageComponent();
     MessageComponent messageComponent = new MessageComponent(consoleMessage);
+    messageComponent.bienvenidaAlUsuario();
 
     while (ejecucion) {
-      messageComponent.bienvenidaAlUsuario();
       Persona persona = formComponent.iniciar();
       messageComponent.revisarPeso(persona);
       messageComponent.esMayorEdad(persona);
